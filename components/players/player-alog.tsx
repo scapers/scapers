@@ -1,17 +1,29 @@
 import {Player} from '../../interfaces';
 import useSWR from 'swr';
 import {get} from '../../services/fetcher/fetcher';
-import {Card, Col, Dropdown, Row} from 'react-bootstrap';
+import {Button, Card, Col, Dropdown, Row} from 'react-bootstrap';
 import moment from 'moment';
 import DropImage from '../utils/drop-image';
+import {useEffect, useState} from 'react';
+import {activityTypeToString} from '../../services/enums/enum-service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 const PlayerAlog = ({id, name}: Player) => {
-    let activitytype = -1;
+    const [activityType, setActivityType] = useState(-1);
+    const [activityName, setActivityName] = useState('All');
+    const [skip, setSkip] = useState(0);
+
+    useEffect(() => {
+        console.log('activityType', activityType);
+        setActivityName(activityTypeToString(activityType));
+    }, [activityType])
+
     const {
         data: activities,
         error: activitiesError,
-        mutate
-    } = useSWR(id ? `/api/players/${name}/activities/${id}?timeperiod=-1&activitytype=${activitytype}&skip=0` : null, get);
+    } = useSWR(id ? `/api/players/${name}/activities/${id}?timeperiod=-1&activitytype=${activityType}&skip=${skip}` : null, get);
+
     if (activitiesError) return <div>Failed to load player activities from RunePixels</div>
     if (!activities) return <div>Loading activities from RunePixels</div>
 
@@ -19,9 +31,19 @@ const PlayerAlog = ({id, name}: Player) => {
         event.preventDefault();
         event.persist();
         event.stopPropagation();
-        activitytype = eventKey;
-        // await mutate(`/api/players/${name}/activities/${id}?timeperiod=-1&activitytype=${eventKey}&skip=0`);
-        console.log(eventKey);
+        setActivityType(eventKey);
+    }
+
+    const back = () => {
+        if (skip >= 100) {
+            setSkip(skip - 100);
+            window.scrollTo(0,0)
+        }
+    }
+
+    const forward = () => {
+        setSkip(skip + 100);
+        window.scrollTo(0,0)
     }
 
     return (
@@ -30,9 +52,9 @@ const PlayerAlog = ({id, name}: Player) => {
                 <Card.Body>
                     <Row>
                         <Col>
-                            <h4>{activitytype}</h4>
+                            <h4>{activityName} Entries</h4>
                         </Col>
-                        <Col>
+                        <Col className="d-flex justify-content-end">
                             <Dropdown onSelect={onSelect}>
                                 <Dropdown.Toggle variant="dark" id="alog-category">Category</Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -72,7 +94,25 @@ const PlayerAlog = ({id, name}: Player) => {
                     </Col>
                 ) : <div>No data found</div>}
             </Row>
+            {activities ?
+                <Row>
+                    <Col>
+                        <Button variant="primary" disabled={skip < 100} onClick={back}>
+                            <FontAwesomeIcon icon={faChevronLeft} className="me-2" />
+                            Previous
+                        </Button>
+                    </Col>
+                    <Col className="d-flex justify-content-end">
+                        <Button variant="primary" onClick={forward}>
+                            Next
+                            <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
+                        </Button>
+                    </Col>
+                </Row>
+                :
+                <></>}
         </div>)
-};
+}
+;
 
 export default PlayerAlog;

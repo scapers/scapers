@@ -11,7 +11,7 @@ const PlayerMeta = ({combatLevel, questPoints, overall}: Player) => {
                        <Image src="/assets/img/skills/overall.png"
                               width={20}
                               height={20}
-                              className="mr-2"
+                              className="me-2"
                               alt="Overall"/>
                        {overall.level} | {overall.virtualLevel}
                    </Col>
@@ -19,15 +19,15 @@ const PlayerMeta = ({combatLevel, questPoints, overall}: Player) => {
                         <Image src="/assets/img/skills/xp.png"
                                width={20}
                                height={20}
-                               className="mr-2"
+                               className="me-2"
                                alt="XP"/>
-                        {overall.xp}
+                        {overall.xp.toLocaleString("en-US")}
                     </Col>
                     <Col sm={6} md={3}>
                         <Image src="/assets/img/skills/combat.png"
                                width={20}
                                height={20}
-                               className="mr-2"
+                               className="me-2"
                                alt="Combat"/>
                         {combatLevel}
                     </Col>
@@ -35,7 +35,7 @@ const PlayerMeta = ({combatLevel, questPoints, overall}: Player) => {
                         <Image src="/assets/img/skills/quest_points.png"
                                width={20}
                                height={20}
-                               className="mr-2"
+                               className="me-2"
                                alt="Quest Points"/>
                         {questPoints}
                     </Col>
