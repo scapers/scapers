@@ -1,4 +1,3 @@
-import {getPlayer} from '../../services/players/players-service';
 import PlayersList from '../../components/players/players-list';
 import useSWR from 'swr';
 import {Spinner} from 'react-bootstrap';
