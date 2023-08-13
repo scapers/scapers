@@ -1,17 +1,23 @@
 import Image from 'next/image';
-import {Card, Col, Row, Table} from 'react-bootstrap';
+import {Card, Col, Form, Row, Table} from 'react-bootstrap';
 import {Player} from '../../interfaces';
 import {getSkillNameById} from '../../services/skills/skills-service';
 import useSWR from 'swr';
 import {get} from '../../services/fetcher/fetcher';
+import {useState} from 'react';
 
 const PlayerStats = ({id, name, skills, overall}: Player) => {
+    const [ timeperiod, setTimeperiod ] = useState(1);
     const {
         data: deltas,
         error: deltasError
-    } = useSWR(id ? `/api/players/${name}/deltas/${id}?timeperiod=1` : null, get);
+    } = useSWR(id ? `/api/players/${name}/deltas/${id}?timeperiod=${timeperiod}` : null, get);
     if (deltasError) return <div>Failed to load player deltas from RunePixels</div>
     if (!deltas) return <div>Loading deltas from RunePixels</div>
+
+    const changeTimeperiod = (event) => {
+        setTimeperiod(event.target.value);
+    }
 
     // TODO: Don't like the overall section being a copy pasta, what can we do?
     return (
@@ -26,7 +32,17 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                             <th>Rank</th>
                             <th>Experience</th>
                             <th>Today</th>
-                            <th>Yesterday</th>
+                            <th>
+                                <Form.Select defaultValue="1" value={timeperiod} onChange={changeTimeperiod}>
+                                    <option value="1">Yesterday</option>
+                                    <option value="2">Week</option>
+                                    <option value="5">Last Week</option>
+                                    <option value="3">Month</option>
+                                    <option value="6">Last Month</option>
+                                    <option value="4">Year</option>
+                                    <option value="7">Last Year</option>
+                                </Form.Select>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
