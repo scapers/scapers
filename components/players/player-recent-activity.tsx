@@ -1,7 +1,7 @@
 import {Card, Row, Col} from 'react-bootstrap';
 import {Player} from '../../interfaces';
-import {getSkillNameById} from '../../services/skills/skills-service';
-import Image from 'next/image';
+import moment from 'moment';
+import DropImage from '../utils/drop-image';
 
 const PlayerRecentActivity = ({activity}: Player) => {
     return (
@@ -11,12 +11,15 @@ const PlayerRecentActivity = ({activity}: Player) => {
             </Card.Title>
             <Card.Body>
                 {activity.map((a, idx) =>
-                        <Row>
+                        <Row className="mb-2" key={idx + 'RecentActivity'}>
                             <Col xs={3}>
-                                img
+                                <DropImage text={a.text}
+                                           skill={a.skill}
+                                           type={a.type}/>
                             </Col>
                             <Col xs={9}>
-                                {a.text}
+                                <h6 className="mb-1">{a.text}</h6>
+                                <small className="text-muted">{moment(a.date).format('YYYY-DD-MM HH:mm')}</small>
                             </Col>
                         </Row>
                 )

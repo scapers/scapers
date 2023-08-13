@@ -41,12 +41,14 @@ export type Minigame = {
   total: number;
 }
 
+export type Activities = Activity[];
+
 export type Activity = {
-  type: number;
-  text: string;
-  skill: string;
-  npc: string;
-  date: Date;
+  type?: number;
+  text?: string;
+  skill?: string;
+  npc?: string;
+  date?: Date;
 }
 
 export type Deltas = Delta[];
