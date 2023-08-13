@@ -42,8 +42,11 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                 Overall
                             </td>
                             <td>
-                                {overall.virtualLevel}
-                                {overall.levelDelta > 0 ? overall.levelDelta : ''}
+                                <span className="me-2">{overall.virtualLevel}</span>
+                                <span
+                                    className={`${overall.levelDelta > 0 ? "text-success" : (overall.levelDelta < 0 ? "text-danger" : "")}`}>
+                                            {overall.levelDelta > 0 ? '+' : ''}{overall.levelDelta !== 0 ? overall.levelDelta : ''}
+                                        </span>
                             </td>
                             <td>
                                 <span className="me-2">{overall.rank}</span>
@@ -74,8 +77,11 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                         {getSkillNameById(skill.id)}
                                     </td>
                                     <td>
-                                        {skill.virtualLevel}
-                                        {skill.levelDelta > 0 ? skill.levelDelta : ''}
+                                        <span className="me-2">{skill.virtualLevel}</span>
+                                        <span
+                                            className={`${skill.levelDelta > 0 ? "text-success" : (skill.levelDelta < 0 ? "text-danger" : "")}`}>
+                                            {skill.levelDelta > 0 ? '+' : ''}{skill.levelDelta !== 0 ? skill.levelDelta : ''}
+                                        </span>
                                     </td>
                                     <td>
                                         <span className="me-2">{skill.rank}</span>
