@@ -51,8 +51,8 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                             <td>
                                 <span className="me-2">{overall.rank}</span>
                                 <span
-                                    className={`${overall.rankDelta > 0 ? "text-success" : (overall.rankDelta < 0 ? "text-danger" : "")}`}>
-                                            {overall.rankDelta > 0 ? '+' : ''}{overall.rankDelta !== 0 ? overall.rankDelta : ''}
+                                    className={`${overall.rankDelta < 0 ? "text-success" : (overall.rankDelta > 0 ? "text-danger" : "")}`}>
+                                            {overall.rankDelta < 0 ? '+' : (overall.rankDelta > 0 ? "-" : "")}{overall.rankDelta !== 0 ? overall.rankDelta : ''}
                                         </span>
                             </td>
                             <td>{overall.xp.toLocaleString("en-US")}</td>
@@ -86,8 +86,8 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                     <td>
                                         <span className="me-2">{skill.rank}</span>
                                         <span
-                                            className={`${skill.rankDelta > 0 ? "text-success" : (skill.rankDelta < 0 ? "text-danger" : "")}`}>
-                                            {skill.rankDelta > 0 ? '+' : ''}{skill.rankDelta !== 0 ? skill.rankDelta : ''}
+                                            className={`${skill.rankDelta < 0 ? "text-success" : (skill.rankDelta > 0 ? "text-danger" : "")}`}>
+                                            {skill.rankDelta < 0 ? '+' : (skill.rankDelta > 0 ? "-" : "")}{skill.rankDelta !== 0 ? skill.rankDelta : ''}
                                         </span>
                                     </td>
                                     <td>{skill.xp.toLocaleString("en-US")}</td>
