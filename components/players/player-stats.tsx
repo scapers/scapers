@@ -16,7 +16,7 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
     // TODO: Don't like the overall section being a copy pasta, what can we do?
     return (
         <>
-            <Card bg="dark-subtle" className="d-none d-sm-block">
+            <Card bg="dark-subtle" className="d-none d-lg-block">
                 <Card.Body>
                     <Table striped hover borderless>
                         <thead>
@@ -39,20 +39,20 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                     alt="Overall"
                                     className="mr-2"
                                 />
-                                Overall
+                                <span className="titlecase">Overall</span>
                             </td>
                             <td>
-                                <span className="me-2">{overall.virtualLevel}</span>
+                                <span className="me-2">{overall.virtualLevel.toLocaleString("en-US")}</span>
                                 <span
                                     className={`${overall.levelDelta > 0 ? "text-success" : (overall.levelDelta < 0 ? "text-danger" : "")}`}>
                                             {overall.levelDelta > 0 ? '+' : ''}{overall.levelDelta !== 0 ? overall.levelDelta : ''}
                                         </span>
                             </td>
                             <td>
-                                <span className="me-2">{overall.rank}</span>
+                                <span className="me-2">{overall.rank.toLocaleString("en-US")}</span>
                                 <span
                                     className={`${overall.rankDelta < 0 ? "text-success" : (overall.rankDelta > 0 ? "text-danger" : "")}`}>
-                                            {overall.rankDelta < 0 ? '+' : (overall.rankDelta > 0 ? "-" : "")}{overall.rankDelta !== 0 ? overall.rankDelta : ''}
+                                            {overall.rankDelta < 0 ? '+' : (overall.rankDelta > 0 ? "-" : "")}{overall.rankDelta !== 0 ? Math.abs(overall.rankDelta) : ''}
                                         </span>
                             </td>
                             <td>{overall.xp.toLocaleString("en-US")}</td>
@@ -74,7 +74,7 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                             alt={getSkillNameById(skill.id)}
                                             className="mr-2"
                                         />
-                                        {getSkillNameById(skill.id)}
+                                        <span className="titlecase">{getSkillNameById(skill.id)}</span>
                                     </td>
                                     <td>
                                         <span className="me-2">{skill.virtualLevel}</span>
@@ -84,10 +84,10 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                         </span>
                                     </td>
                                     <td>
-                                        <span className="me-2">{skill.rank}</span>
+                                        <span className="me-2">{skill.rank.toLocaleString("en-US")}</span>
                                         <span
                                             className={`${skill.rankDelta < 0 ? "text-success" : (skill.rankDelta > 0 ? "text-danger" : "")}`}>
-                                            {skill.rankDelta < 0 ? '+' : (skill.rankDelta > 0 ? "-" : "")}{skill.rankDelta !== 0 ? skill.rankDelta : ''}
+                                            {skill.rankDelta < 0 ? '+' : (skill.rankDelta > 0 ? "-" : "")}{skill.rankDelta !== 0 ? Math.abs(skill.rankDelta) : ''}
                                         </span>
                                     </td>
                                     <td>{skill.xp.toLocaleString("en-US")}</td>
@@ -106,10 +106,40 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                 </Card.Body>
             </Card>
 
-            <div className="d-block d-sm-none">
+            <div className="d-block d-sm-block d-md-block d-lg-none">
+                <Card className="mb-4" bg="dark-subtle">
+                    <Card.Header>
+                        <Image
+                            src={`/assets/img/skills/overall.png`}
+                            width={20}
+                            height={20}
+                            alt="Overall"
+                            className="mr-2"
+                        />
+                        <span
+                            className="titlecase">overall</span> | {overall.virtualLevel} | {overall.xp.toLocaleString("en-US")}
+                    </Card.Header>
+                    <Card.Body>
+                        <Row>
+                            <Col>
+                                <div className={`${overall.xpDelta > 0 ? "text-success" : ""}`}>
+                                    {overall.xpDelta > 0 ? '+' : ''}{overall.xpDelta.toLocaleString("en-US")}
+                                </div>
+                                xp today
+                            </Col>
+                            <Col>
+                                <div
+                                    className={`${overall.rankDelta < 0 ? "text-success" : (overall.rankDelta > 0 ? "text-danger" : "")}`}>
+                                            {overall.rankDelta < 0 ? '+' : (overall.rankDelta > 0 ? "-" : "")}{Math.abs(overall.rankDelta)}
+                                </div>
+                                rank today
+                            </Col>
+                        </Row>
+                    </Card.Body>
+                </Card>
                 {
                     skills.map((skill, idx) => (
-                        <Card className="mb-2" bg="dark-subtle" key={idx}>
+                        <Card className="mb-4" bg="dark-subtle" key={idx}>
                             <Card.Header>
                                 <Image
                                     src={`/assets/img/skills/${getSkillNameById(skill.id)}.png`}
@@ -118,7 +148,8 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                     alt={getSkillNameById(skill.id)}
                                     className="mr-2"
                                 />
-                                {getSkillNameById(skill.id)} | {skill.virtualLevel} | {skill.xp.toLocaleString("en-US")}
+                                <span
+                                    className="titlecase">{getSkillNameById(skill.id)}</span> | {skill.virtualLevel} | {skill.xp.toLocaleString("en-US")}
                             </Card.Header>
                             <Card.Body>
                                 <Row>
@@ -127,6 +158,13 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                                             {skill.xpDelta > 0 ? '+' : ''}{skill.xpDelta.toLocaleString("en-US")}
                                         </div>
                                         xp today
+                                    </Col>
+                                    <Col>
+                                        <div
+                                            className={`${skill.rankDelta < 0 ? "text-success" : (skill.rankDelta > 0 ? "text-danger" : "")}`}>
+                                            {skill.rankDelta < 0 ? '+' : (skill.rankDelta > 0 ? "-" : "")}{Math.abs(skill.rankDelta)}
+                                        </div>
+                                        rank today
                                     </Col>
                                 </Row>
                             </Card.Body>

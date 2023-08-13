@@ -16,21 +16,21 @@ const PlayerPage = () => {
 
     return (
         <div>
-            <Row className="mb-4">
-                <Col sm={4}>
+            <Row>
+                <Col sm={4} className="mb-4">
                     <PlayerCard name={player.name} />
                 </Col>
-                <Col sm={8}>
+                <Col sm={8} className="mb-4">
                     <PlayerMeta combatLevel={player.combatLevel}
                                 overall={player.overall}
                                 questPoints={player.questPoints} />
                 </Col>
             </Row>
             <Row>
-                <Col sm={3}>
+                <Col sm={3} className="mb-4">
                     <PlayerRecentActivity activity={player.activity} />
                 </Col>
-                <Col sm={9}>
+                <Col sm={9} className="mb-4">
                     <PlayerStats    id={player.id}
                                     name={player.name}
                                     overall={player.overall}
