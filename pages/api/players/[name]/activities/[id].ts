@@ -8,8 +8,13 @@ const PlayerActivitiesHandler = async (
 ) => {
     const { query } = req
     const { name, id, timeperiod, activitytype, skip } = query
-    const url = `https://api.runepixels.com/players/${id}/activity?timeperiod=${timeperiod}&activitytype=${activitytype}&skip=${skip}`;
-    const r = await axios.get(url);
+    const r = await axios.get(`https://api.runepixels.com/players/${id}/activity`, {
+        params: {
+            timeperiod,
+            activitytype,
+            skip
+        }
+    });
     if (r && r.data) {
         return res.status(200).json(r.data);
     }

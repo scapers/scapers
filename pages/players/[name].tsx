@@ -19,7 +19,9 @@ const PlayerPage = () => {
         <div>
             <Row>
                 <Col sm={4} className="mb-4">
-                    <PlayerCard name={player.name} />
+                    <PlayerCard name={player.name}
+                                clan={player.clan}
+                        />
                 </Col>
                 <Col sm={8} className="mb-4">
                     <PlayerMeta combatLevel={player.combatLevel}

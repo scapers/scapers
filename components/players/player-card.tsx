@@ -1,7 +1,8 @@
 import {Card, Col, Row} from 'react-bootstrap';
 import {Player} from '../../interfaces';
+import Link from 'next/link';
 
-const PlayerCard = ({name}: Player) => {
+const PlayerCard = ({name, clan}: Player) => {
     return (
         <Card bg="dark-subtle">
             <Card.Body>
@@ -12,6 +13,7 @@ const PlayerCard = ({name}: Player) => {
                     </Col>
                     <Col xs={8}>
                         <h1>{name}</h1>
+                        <small>Current Clan: <Link href={`/clans/${clan.name}`}>{clan.name}</Link></small>
                     </Col>
                 </Row>
             </Card.Body>

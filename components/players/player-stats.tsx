@@ -33,7 +33,7 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
                             <th>Experience</th>
                             <th>Today</th>
                             <th>
-                                <Form.Select defaultValue="1" value={timeperiod} onChange={changeTimeperiod}>
+                                <Form.Select value={timeperiod} onChange={changeTimeperiod}>
                                     <option value="1">Yesterday</option>
                                     <option value="2">Week</option>
                                     <option value="5">Last Week</option>

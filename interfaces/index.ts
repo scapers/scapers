@@ -59,6 +59,39 @@ export type Delta = {
   xp: number;
 }
 
+export type ClanMeta = {
+  id?: number;
+  name?: string;
+  totalMembers?: number;
+  totalLevelAverage?: number;
+  killDeathRatio?: number;
+  totalXP?: number;
+  citadelLevel?: number;
+  descriptionTitle?: string;
+  description?: string;
+  highestRanks?: HighestRanks[];
+  lastTrack?: Date;
+  activity?: ClanActivityOverview[];
+}
+
+export type HighestRanks = {
+  playerID: number;
+  name: string;
+  type: number;
+  rank: number;
+  xp: number;
+  kills: number;
+  joinDate: Date;
+}
+
+export type ClanActivityOverview = {
+  playerName: string;
+  playerType: number;
+  type: number;
+  data: string;
+  createdAt: Date;
+}
+
 export type ResponseError = {
   message: string
 }

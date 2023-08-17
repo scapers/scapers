@@ -88,7 +88,7 @@ const PlayerAlog = ({id, name}: Player) => {
                                 </Row>
                             </Card.Body>
                             <Card.Footer>
-                                {moment(activity.date).fromNow()}
+                                {moment(activity.date).utc().fromNow()}
                             </Card.Footer>
                         </Card>
                     </Col>

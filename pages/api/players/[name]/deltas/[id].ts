@@ -9,7 +9,11 @@ const PlayerDeltasHandler = async (
     const { query } = req
     const { name, id, timeperiod } = query
 
-    const r = await axios.get(`https://api.runepixels.com/players/${id}/xp?timeperiod=${timeperiod}`);
+    const r = await axios.get(`https://api.runepixels.com/players/${id}/xp`, {
+        params: {
+            timeperiod
+        }
+    });
     if (r && r.data) {
         return res.status(200).json(r.data);
     }
