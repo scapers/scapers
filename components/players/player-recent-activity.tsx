@@ -10,7 +10,7 @@ const PlayerRecentActivity = ({activity}: Player) => {
                 Recent Activity
             </Card.Title>
             <Card.Body>
-                {activity.map((a, idx) =>
+                {activity ? activity.map((a, idx) =>
                         <Row className="mb-2" key={idx + 'RecentActivity'}>
                             <Col xs={3}>
                                 <DropImage text={a.text}
@@ -21,8 +21,7 @@ const PlayerRecentActivity = ({activity}: Player) => {
                                 <h6 className="mb-1">{a.text}</h6>
                                 <small className="text-muted">{moment(a.date).format('YYYY-DD-MM HH:mm')}</small>
                             </Col>
-                        </Row>
-                )
+                        </Row>) : <div>No data found</div>
                 }
             </Card.Body>
         </Card>
