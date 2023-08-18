@@ -5,6 +5,7 @@ import {Col, Nav, Row, Spinner, Tab} from 'react-bootstrap';
 import ClanLeaders from '../../components/clans/clan-leaders';
 import ClanCard from '../../components/clans/clan-card';
 import ClanRanking from '../../components/clans/clan-ranking';
+import ClanHiscore from '../../components/clans/clan-hiscore';
 
 const ClanPage = () => {
     const {query} = useRouter();
@@ -45,7 +46,12 @@ const ClanPage = () => {
                                 </Row>
                             </Tab.Pane>
                             <Tab.Pane eventKey="hiscore">
-
+                                <Row>
+                                    <Col>
+                                        <ClanHiscore id={clan.id}
+                                                     name={clan.name} />
+                                    </Col>
+                                </Row>
                             </Tab.Pane>
                         </Tab.Content>
                     </Tab.Container>

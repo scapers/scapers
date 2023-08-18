@@ -1,17 +1,16 @@
 import axios from 'axios';
 import {NextApiRequest, NextApiResponse} from 'next';
-import {ClanRankings, ResponseError} from '../../../../../../interfaces';
+import {ClanHiscores, ResponseError} from '../../../../../../interfaces';
 
-const ClanRankingHandler = async (
+const ClanHiscoreHandler = async (
     req: NextApiRequest,
-    res: NextApiResponse<ClanRankings | ResponseError>
+    res: NextApiResponse<ClanHiscores | ResponseError>
 ) => {
     const { query } = req
-    const { name, id, timeperiod, playertype, playersubtype, skill } = query
+    const { name, id, playertype, playersubtype, skill } = query
 
-    const r = await axios.get(`https://api.runepixels.com/clans/${id}/players/ranking`, {
+    const r = await axios.get(`https://api.runepixels.com/clans/${id}/players/hiscore`, {
         params: {
-            timeperiod,
             playertype,
             playersubtype,
             skill
@@ -24,4 +23,4 @@ const ClanRankingHandler = async (
     return res.status(404).json({ message: `Clan with name: ${name} not found.` });
 };
 
-export default ClanRankingHandler;
+export default ClanHiscoreHandler;

@@ -22,7 +22,7 @@ const ClanRanking = ({id, name}: ClanMeta) => {
 
     return (
         <>
-            <Card bg="dark-subtle" className="d-none d-lg-block">
+            <Card bg="dark-subtle" className="">
                 <Card.Title className="px-2 pt-2 mb-0">
                     <Form.Select value={timeperiod} onChange={changeTimeperiod}>
                         <option value="0">Today</option>

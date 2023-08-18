@@ -92,6 +92,26 @@ export type ClanActivityOverview = {
   createdAt: Date;
 }
 
+export type ClanRankings = ClanRanking[];
+
+export type ClanRanking = {
+  name?: string;
+  xp?: string;
+  type?: number;
+};
+
+
+export type ClanHiscores = ClanHiscore[];
+
+export type ClanHiscore = {
+  level?: number;
+  name?: string;
+  rank?: number;
+  type?: number;
+  xp?: number;
+  xpDelta?: number;
+}
+
 export type ResponseError = {
   message: string
 }
