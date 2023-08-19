@@ -12,4 +12,4 @@ TODO: Setup env variables so we can point to various runepixels endpoints
 
 ### Deployment
 
-Check-ins to the `main` branch will result in deployment to [Vercel](https://vercel.com).
+Check ins to the `main` branch will result in deployment to [Vercel](https://vercel.com).

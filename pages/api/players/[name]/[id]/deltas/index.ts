@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {NextApiRequest, NextApiResponse} from 'next';
-import {Deltas, ResponseError} from '../../../../../interfaces';
+import {Deltas, ResponseError} from '../../../../../../interfaces';
 
 const PlayerDeltasHandler = async (
     req: NextApiRequest,

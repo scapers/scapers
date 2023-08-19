@@ -11,7 +11,7 @@ const ClanRanking = ({id, name}: ClanMeta) => {
     const {
         data: rankings,
         error: rankingsError
-    } = useSWR(id ? `/api/clans/${name}/players/ranking/${id}?timeperiod=${timeperiod}&playertype=0&playersubtype=0&skill=overall` : null, get);
+    } = useSWR(id ? `/api/clans/${name}/${id}/players/ranking?timeperiod=${timeperiod}&playertype=0&playersubtype=0&skill=overall` : null, get);
 
     if (rankingsError) return <div>Failed to load clan rankings from RunePixels</div>
     if (!rankings) return <div>Loading clan rankings from RunePixels</div>

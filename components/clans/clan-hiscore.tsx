@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const ClanHiscore = ({id, name}: ClanMeta) => {
     const {data: hiscore, error: hiscoreError} =
-        useSWR(id ? `/api/clans/${name}/players/hiscore/${id}?playertype=0&playersubtype=0&skill=overall` : null, get);
+        useSWR(id ? `/api/clans/${name}/${id}/players/hiscore?playertype=0&playersubtype=0&skill=overall` : null, get);
 
     if (hiscoreError) return <div>Failed to load clan hiscore from RunePixels</div>
     if (!hiscore) return <div>Loading clan hiscore from RunePixels</div>

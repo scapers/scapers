@@ -22,7 +22,7 @@ const PlayerAlog = ({id, name}: Player) => {
     const {
         data: activities,
         error: activitiesError,
-    } = useSWR(id ? `/api/players/${name}/activities/${id}?timeperiod=-1&activitytype=${activityType}&skip=${skip}` : null, get);
+    } = useSWR(id ? `/api/players/${name}/${id}/activities?timeperiod=-1&activitytype=${activityType}&skip=${skip}` : null, get);
 
     if (activitiesError) return <div>Failed to load player activities from RunePixels</div>
     if (!activities) return <div>Loading activities from RunePixels</div>

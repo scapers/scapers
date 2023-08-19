@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {NextApiRequest, NextApiResponse} from 'next';
-import {ClanRankings, ResponseError} from '../../../../../../interfaces';
+import {ClanRankings, ResponseError} from '../../../../../../../interfaces';
 
 const ClanRankingHandler = async (
     req: NextApiRequest,

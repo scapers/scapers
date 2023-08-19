@@ -44,6 +44,8 @@ export type Minigame = {
 export type Activities = Activity[];
 
 export type Activity = {
+  playerName?: string;
+  playerType?: number;
   type?: number;
   text?: string;
   skill?: string;

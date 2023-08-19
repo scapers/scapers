@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {NextApiRequest, NextApiResponse} from 'next';
-import {Activities, ResponseError} from '../../../../../interfaces';
+import {Activities, ResponseError} from '../../../../../../interfaces';
 
 const PlayerActivitiesHandler = async (
     req: NextApiRequest,

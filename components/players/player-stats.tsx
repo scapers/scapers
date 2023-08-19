@@ -11,7 +11,7 @@ const PlayerStats = ({id, name, skills, overall}: Player) => {
     const {
         data: deltas,
         error: deltasError
-    } = useSWR(id ? `/api/players/${name}/deltas/${id}?timeperiod=${timeperiod}` : null, get);
+    } = useSWR(id ? `/api/players/${name}/${id}/deltas?timeperiod=${timeperiod}` : null, get);
     if (deltasError) return <div>Failed to load player deltas from RunePixels</div>
     if (!deltas) return <div>Loading deltas from RunePixels</div>
 

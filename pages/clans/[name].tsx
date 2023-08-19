@@ -6,6 +6,8 @@ import ClanLeaders from '../../components/clans/clan-leaders';
 import ClanCard from '../../components/clans/clan-card';
 import ClanRanking from '../../components/clans/clan-ranking';
 import ClanHiscore from '../../components/clans/clan-hiscore';
+import ClanRecentActivity from '../../components/clans/clan-recent-activity';
+import ClanMeta from '../../components/clans/clan-meta';
 
 const ClanPage = () => {
     const {query} = useRouter();
@@ -19,6 +21,15 @@ const ClanPage = () => {
             <Row className="mb-4">
                 <Col sm={4}>
                     <ClanCard name={clan.name} />
+                </Col>
+                <Col sm={8}>
+                    <ClanMeta citadelLevel={clan.citadelLevel}
+                              totalLevelAverage={clan.totalLevelAverage}
+                              totalXP={clan.totalXP}
+                              totalMembers={clan.totalMembers}
+                              descriptionTitle={clan.descriptionTitle}
+                              description={clan.description}
+                              />
                 </Col>
             </Row>
             <Row>
@@ -39,10 +50,13 @@ const ClanPage = () => {
                             <Tab.Pane eventKey="home">
                                 <Row>
                                     <Col>
+                                        <ClanRecentActivity id={clan.id}
+                                                            name={clan.name} />
+                                    </Col>
+                                    <Col>
                                         <ClanRanking id={clan.id}
                                                      name={clan.name} />
                                     </Col>
-                                    <Col></Col>
                                 </Row>
                             </Tab.Pane>
                             <Tab.Pane eventKey="hiscore">
