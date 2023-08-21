@@ -3,7 +3,7 @@ import {Button, Offcanvas} from 'react-bootstrap';
 import Image from 'next/image';
 import {skills} from '../../services/skills/skills-service';
 
-const SkillsDropdown = ({defaultSkill, changeSkill}) => {
+const SkillsDropdown = ({defaultSkill, changeSkill, placement}) => {
     const [show, setShow] = useState(false);
     const [skill, setSkill] = useState(defaultSkill);
 
@@ -22,7 +22,7 @@ const SkillsDropdown = ({defaultSkill, changeSkill}) => {
                     <Image src={`/assets/img/skills/${skill}.png`} alt={`Skill`} height={25} width={25}></Image>
                 </Button>
             </div>
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={show} onHide={handleClose} placement={placement}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Skill Select</Offcanvas.Title>
                 </Offcanvas.Header>

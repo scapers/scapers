@@ -16,15 +16,17 @@ const PlayerPage = () => {
     if (!player) return <div><Spinner animation="border" variant="primary"/></div>
 
     return (
-        <div>
+        <div className="push-up-player">
             <Row>
                 <Col sm={4} className="mb-4">
                     <PlayerCard name={player.name}
                                 clan={player.clan}
+                                lastActivity={player.lastActivity}
                         />
                 </Col>
                 <Col sm={8} className="mb-4">
-                    <PlayerMeta combatLevel={player.combatLevel}
+                    <PlayerMeta name={player.name}
+                                combatLevel={player.combatLevel}
                                 overall={player.overall}
                                 questPoints={player.questPoints} />
                 </Col>

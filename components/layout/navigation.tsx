@@ -1,10 +1,10 @@
-import {Container, Nav, Navbar } from 'react-bootstrap';
+import {Badge, Container, Nav, Navbar} from 'react-bootstrap';
 
 const Navigation = () => {
     return (
         <Navbar expand="lg" className="mb-2">
             <Container fluid>
-                <Navbar.Brand href="/">Scapers</Navbar.Brand>
+                <Navbar.Brand href="/">Scapers <Badge bg="danger">beta</Badge></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

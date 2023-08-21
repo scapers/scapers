@@ -1,4 +1,4 @@
-import PlayersList from '../../components/players/players-list';
+import PlayersRankings from '../../components/players/players-rankings';
 import useSWR from 'swr';
 import {Spinner} from 'react-bootstrap';
 import Link from 'next/link';

@@ -7,7 +7,7 @@ import ClanCard from '../../components/clans/clan-card';
 import ClanRanking from '../../components/clans/clan-ranking';
 import ClanHiscore from '../../components/clans/clan-hiscore';
 import ClanRecentActivity from '../../components/clans/clan-recent-activity';
-import ClanMeta from '../../components/clans/clan-meta';
+import ClanStatistics from '../../components/clans/clan-statistics';
 
 const ClanPage = () => {
     const {query} = useRouter();
@@ -17,26 +17,28 @@ const ClanPage = () => {
     if (!clan) return <div><Spinner animation="border" variant="primary"/></div>
 
     return (
-        <div>
-            <Row className="mb-4">
+        <div className="push-up-clan">
+            <Row className="mb-5 justify-content-center">
                 <Col sm={4}>
-                    <ClanCard name={clan.name} />
+                    <ClanCard name={clan.name}/>
                 </Col>
-                <Col sm={8}>
-                    <ClanMeta citadelLevel={clan.citadelLevel}
-                              totalLevelAverage={clan.totalLevelAverage}
-                              totalXP={clan.totalXP}
-                              totalMembers={clan.totalMembers}
-                              descriptionTitle={clan.descriptionTitle}
-                              description={clan.description}
-                              />
+            </Row>
+            <Row class="mb-4">
+                <Col>
                 </Col>
             </Row>
             <Row>
-                <Col sm={3}>
-                    <ClanLeaders highestRanks={clan.highestRanks} />
+                <Col sm={4}>
+                    <ClanStatistics citadelLevel={clan.citadelLevel}
+                                    totalLevelAverage={clan.totalLevelAverage}
+                                    totalXP={clan.totalXP}
+                                    totalMembers={clan.totalMembers}
+                                    descriptionTitle={clan.descriptionTitle}
+                                    description={clan.description}
+                    />
                 </Col>
-                <Col sm={9}>
+                <Col sm={8}>
+                    <ClanLeaders highestRanks={clan.highestRanks}/>
                     <Tab.Container defaultActiveKey="home">
                         <Nav className="justify-content-center mb-3" defaultActiveKey="home">
                             <Nav.Item>
@@ -51,11 +53,11 @@ const ClanPage = () => {
                                 <Row>
                                     <Col xs={12} md={6}>
                                         <ClanRecentActivity id={clan.id}
-                                                            name={clan.name} />
+                                                            name={clan.name}/>
                                     </Col>
                                     <Col xs={12} md={6}>
                                         <ClanRanking id={clan.id}
-                                                     name={clan.name} />
+                                                     name={clan.name}/>
                                     </Col>
                                 </Row>
                             </Tab.Pane>
@@ -63,7 +65,7 @@ const ClanPage = () => {
                                 <Row>
                                     <Col>
                                         <ClanHiscore id={clan.id}
-                                                     name={clan.name} />
+                                                     name={clan.name}/>
                                     </Col>
                                 </Row>
                             </Tab.Pane>

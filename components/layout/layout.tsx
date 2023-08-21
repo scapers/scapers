@@ -8,7 +8,7 @@ const Layout = ({children}) => {
         <>
             <Navigation />
             <Banner />
-            <Container className="mt-4">
+            <Container>
                 <main>{children}</main>
                 <Footer />
             </Container>

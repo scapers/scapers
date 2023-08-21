@@ -47,6 +47,7 @@ const ClanRanking = ({id, name}: ClanMeta) => {
                             <SkillsDropdown
                                             changeSkill={changeSkill}
                                             defaultSkill={skill}
+                                            placement="end"
                             />
                         </Col>
                     </Row>

@@ -102,6 +102,16 @@ export type ClanRanking = {
   type?: number;
 };
 
+export type Rankings = {
+  ranking: Ranking[];
+}
+
+export type Ranking = {
+  rank: number;
+  name: string;
+  type: number;
+  xp: number;
+}
 
 export type ClanHiscores = ClanHiscore[];
 
