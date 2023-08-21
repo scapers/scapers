@@ -1,4 +1,4 @@
-const stats: string[] = [
+export const skills: string[] = [
     'attack', 'defence', 'strength', 'hitpoints', 'ranged', 'prayer', 'magic', 'cooking', 'woodcutting',
     'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblore', 'agility', 'thieving',
     'slayer', 'farming', 'runecrafting', 'hunter', 'construction', 'summoning', 'dungeoneering', 'divination',
@@ -6,5 +6,5 @@ const stats: string[] = [
 ];
 
 export const getSkillNameById = (id: number) => {
-    return stats[id];
+    return skills[id];
 }

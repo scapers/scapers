@@ -49,11 +49,11 @@ const ClanPage = () => {
                         <Tab.Content>
                             <Tab.Pane eventKey="home">
                                 <Row>
-                                    <Col>
+                                    <Col xs={12} md={6}>
                                         <ClanRecentActivity id={clan.id}
                                                             name={clan.name} />
                                     </Col>
-                                    <Col>
+                                    <Col xs={12} md={6}>
                                         <ClanRanking id={clan.id}
                                                      name={clan.name} />
                                     </Col>
