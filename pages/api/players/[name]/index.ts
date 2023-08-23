@@ -9,7 +9,7 @@ const PlayerHandler = async (
     const { query } = req
     const { name } = query
 
-    const r = await axios.get(`https://api.runepixels.com/players/${name}`);
+    const r = await axios.get(`${process.env.RUNEPIXELS_API}/players/${name}`);
     if (r && r.data) {
         return res.status(200).json(r.data);
     }

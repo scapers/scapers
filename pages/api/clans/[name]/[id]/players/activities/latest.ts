@@ -9,7 +9,7 @@ const LatestClanActivityHandler = async (
     const { query } = req
     const { name, id, activitytype } = query
 
-    const r = await axios.get(`https://api.runepixels.com/clans/${id}/players/activities/latest`, {
+    const r = await axios.get(`${process.env.RUNEPIXELS_API}/clans/${id}/players/activities/latest`, {
         params: {
             activitytype
         }

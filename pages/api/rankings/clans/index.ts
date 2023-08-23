@@ -9,7 +9,7 @@ const ClansRankingHandler = async (
     const { query } = req
     const { timeperiod, playertype, playersubtype, skill, limit } = query
 
-    const r = await axios.get(`https://api.runepixels.com/clans/ranking`, {
+    const r = await axios.get(`${process.env.RUNEPIXELS_API}/clans/ranking`, {
         params: {
             timeperiod,
             playertype,

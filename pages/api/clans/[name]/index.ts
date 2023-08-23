@@ -9,7 +9,7 @@ const ClanHandler = async (
     const { query } = req
     const { name } = query
 
-    const r = await axios.get(`https://api.runepixels.com/clans/${name}`);
+    const r = await axios.get(`${process.env.RUNEPIXELS_API}/clans/${name}`);
     if (r && r.data) {
         return res.status(200).json(r.data);
     }

@@ -9,7 +9,7 @@ const ClanHiscoreHandler = async (
     const { query } = req
     const { name, id, playertype, playersubtype, skill } = query
 
-    const r = await axios.get(`https://api.runepixels.com/clans/${id}/players/hiscore`, {
+    const r = await axios.get(`${process.env.RUNEPIXELS_API}/clans/${id}/players/hiscore`, {
         params: {
             playertype,
             playersubtype,
